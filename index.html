@@ -36,7 +36,11 @@ aside h3 { margin: 0 0 14px 0; font-size: 14px; color: var(--text-muted); font-w
 .answer a { color: var(--primary); text-decoration: none; }
 .answer a:hover { text-decoration: underline; }
 .images { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 10px; }
-.images img { max-width: 220px; border: 1px solid var(--border); border-radius: 6px; cursor: zoom-in; }
+.images img { max-width: 220px; border: 1px solid var(--border); border-radius: 6px; cursor: zoom-in; transition: transform .2s; }
+.images img:hover { transform: scale(1.02); }
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 300; padding: 20px; cursor: zoom-out; }
+.lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); background: #fff; }
+.lightbox.show { display: flex; }
 .meta { margin-top: 10px; font-size: 13px; color: var(--text-muted); }
 .actions { margin-top: 12px; }
 .copy-btn { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
@@ -253,6 +257,7 @@ C码套餐：由销售根据表头">
   </main>
 </div>
 <div id="toast" class="toast"></div>
+<div id="lightbox" class="lightbox"><img src="" alt="放大预览"></div>
 <script>
 var cards = document.querySelectorAll('.card');
 var sections = document.querySelectorAll('.cat-section');
@@ -348,6 +353,32 @@ document.addEventListener('click', function(e) {
       document.body.removeChild(ta);
       showToast('✅ 已复制到剪贴板');
     }
+  }
+});
+
+document.addEventListener('click', function(e) {
+  var img = e.target.closest('.faq-img');
+  if (img) {
+    var lb = document.getElementById('lightbox');
+    var lbImg = lb.querySelector('img');
+    lbImg.src = img.getAttribute('src');
+    lbImg.alt = img.getAttribute('alt') || '放大预览';
+    lb.classList.add('show');
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target.tagName.toLowerCase() !== 'img') {
+    this.classList.remove('show');
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var lb = document.getElementById('lightbox');
+    if (lb) lb.classList.remove('show');
   }
 });
 
