@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>来福商城销售答疑——2026端午</title>
+<style>
+:root { --primary: #ed6c21; --primary-light: #fff2ea; --bg: #f6f7f9; --card: #fff; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --radius: 10px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+header { position: sticky; top: 0; z-index: 100; background: var(--card); border-bottom: 1px solid var(--border); padding: 16px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+header h1 { font-size: 18px; color: var(--primary); margin: 0; }
+header .subtitle { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+header input { flex: 1; min-width: 220px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 20px; font-size: 14px; outline: none; }
+header input:focus { border-color: var(--primary); }
+.layout { max-width: 1200px; margin: 20px auto; display: flex; gap: 20px; padding: 0 24px; }
+main { flex: 1; min-width: 0; }
+aside { width: 300px; flex-shrink: 0; position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; background: var(--card); border-radius: var(--radius); padding: 22px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+aside h3 { margin: 0 0 14px 0; font-size: 14px; color: var(--text-muted); font-weight: 600; }
+.cat-item { display: flex; align-items: center; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 14px; transition: all .2s ease; margin-bottom: 5px; text-decoration: none; color: var(--text); border: 1px solid transparent; text-align: left; }
+.cat-item:hover { background: var(--primary-light); border-color: var(--primary); transform: translateX(3px); }
+.cat-item.active { background: var(--primary); color: #fff; box-shadow: 0 2px 6px rgba(237,108,33,0.3); }
+.cat-item::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: transparent; margin-right: 8px; flex-shrink: 0; }
+.cat-item.active::before { background: #fff; }
+.cat-label { flex: 1; }
+.cat-count { font-size: 12px; background: #edf2f7; padding: 1px 7px; border-radius: 10px; margin-left: 8px; flex-shrink: 0; }
+.cat-item.active .cat-count { background: #fff; color: var(--primary); }
+.section-title { font-size: 20px; color: var(--primary); margin: 24px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--primary-light); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+.q-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.freq { font-size: 13px; line-height: 1.5; }
+.q-title { font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.4; }
+.answer { color: var(--text); font-size: 14px; }
+.answer p { margin-bottom: 8px; }
+.answer a { color: var(--primary); text-decoration: none; }
+.answer a:hover { text-decoration: underline; }
+.images { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 10px; }
+.images img { max-width: 220px; border: 1px solid var(--border); border-radius: 6px; cursor: zoom-in; }
+.meta { margin-top: 10px; font-size: 13px; color: var(--text-muted); }
+.actions { margin-top: 12px; }
+.copy-btn { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+.copy-btn:hover { background: var(--primary); color: #fff; }
+.mall-intro { font-weight: 500; margin: 12px 0 8px; color: var(--text); }
+.mall-row { display: flex; flex-direction: column; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.mall-row:last-child { border-bottom: none; }
+.mall-url { font-size: 12px; color: var(--text-muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin-top: 3px; word-break: break-all; }
+.search-wrap { position: relative; flex: 1; min-width: 220px; }
+.search-tags { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.search-tag { font-size: 11px; color: var(--primary); background: var(--primary-light); border: 1px solid var(--primary); border-radius: 12px; padding: 2px 8px; cursor: pointer; }
+.search-tag:hover { background: var(--primary); color: #fff; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2d3748; color: #fff; padding: 10px 20px; border-radius: 20px; font-size: 14px; opacity: 0; transition: .3s; z-index: 200; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.empty { text-align: center; color: var(--text-muted); padding: 40px; }
+@media (max-width: 860px) { .layout { flex-direction: column; } aside { width: 100%; position: static; height: auto; } .images img { max-width: 100%; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>来福商城销售答疑</h1>
+      <div class="subtitle">更新时间：2026年端午季更新1.0-2026.07.02</div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="搜索问题、关键词...">
+      <div class="search-tags">
+        <span class="search-tag" data-key="工单">工单</span>
+        <span class="search-tag" data-key="商品池">商品池</span>
+        <span class="search-tag" data-key="套餐">套餐</span>
+        <span class="search-tag" data-key="演示商城">演示商城</span>
+        <span class="search-tag" data-key="登录">登录</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside>
+    <h3>分类导航</h3>
+    <div id="categoryList">
+      <a href="#all" class="cat-item active" data-target="all">📌 全部 <span class="cat-count">29</span></a>
+<a href="#一、销售中台工单释义" class="cat-item" data-target="一、销售中台工单释义">一、销售中台工单释义 <span class="cat-count">3</span></a>
+<a href="#二、关于商城折扣规则" class="cat-item" data-target="二、关于商城折扣规则">二、关于商城折扣规则 <span class="cat-count">4</span></a>
+<a href="#三、关于标准商品池" class="cat-item" data-target="三、关于标准商品池">三、关于标准商品池 <span class="cat-count">1</span></a>
+<a href="#四、关于销售商品池与个性商品池" class="cat-item" data-target="四、关于销售商品池与个性商品池">四、关于销售商品池与个性商品池 <span class="cat-count">1</span></a>
+<a href="#五、关于定价原则" class="cat-item" data-target="五、关于定价原则">五、关于定价原则 <span class="cat-count">2</span></a>
+<a href="#六、关于京东比价" class="cat-item" data-target="六、关于京东比价">六、关于京东比价 <span class="cat-count">1</span></a>
+<a href="#七、关于商城套餐" class="cat-item" data-target="七、关于商城套餐">七、关于商城套餐 <span class="cat-count">3</span></a>
+<a href="#八、关于商城装修" class="cat-item" data-target="八、关于商城装修">八、关于商城装修 <span class="cat-count">1</span></a>
+<a href="#九、关于三方应用" class="cat-item" data-target="九、关于三方应用">九、关于三方应用 <span class="cat-count">3</span></a>
+<a href="#十、关于演示商城" class="cat-item" data-target="十、关于演示商城">十、关于演示商城 <span class="cat-count">1</span></a>
+<a href="#十一、关于登陆方式" class="cat-item" data-target="十一、关于登陆方式">十一、关于登陆方式 <span class="cat-count">5</span></a>
+<a href="#十二、关于CRM设计工单" class="cat-item" data-target="十二、关于CRM设计工单">十二、关于设计工单 <span class="cat-count">3</span></a>
+<a href="#十三、关于运营与支持的工作细分" class="cat-item" data-target="十三、关于运营与支持的工作细分">十三、关于运营与支持的工作细分 <span class="cat-count">1</span></a>
+    </div>
+  </aside>
+  <main>
+    <section id="一、销售中台工单释义" class="cat-section"><h2 class="section-title">一、销售中台工单释义</h2><div class="card" data-category="一、销售中台工单释义" data-search="来福商城工单说明 销售中台承接企业首次商城搭建服务，自工单接单起3个工作日内完成。首次商城搭建工单为一次性交付工单，属常规服务，无成本产生。">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">来福商城工单说明</h3></div>
+<div class="answer"><p>销售中台承接企业首次商城搭建服务，自工单接单起3个工作日内完成。首次商城搭建工单为一次性交付工单，属常规服务，无成本产生。</p><div class="images open"><img src="images/image1.png" alt="images/image1.png" class="faq-img"></div><div class="meta"><span>📍 操作：企微-简道云-来福商城工单，按系统要求填写内容，尽可能详细、准确描述背景与需求，可提供相关文案及参考图。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组/柳璨</span></div><div class="meta"><span>📝 备注：双方确认工单完结后产生的新需求，如紧急可联系支持老师调整；非紧急需重新提交工单并排队处理。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="一、销售中台工单释义" data-search="工单时效说明？一次性工单和快速工单多久完成？ 一次性工单：提交后3个工作日内完成；快速工单：提交后2个工作日内完成。工单按提交顺序依次处理，不接受插队或临时加急。">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">工单时效说明？一次性工单和快速工单多久完成？</h3></div>
+<div class="answer"><p>一次性工单：提交后3个工作日内完成；快速工单：提交后2个工作日内完成。工单按提交顺序依次处理，不接受插队或临时加急。</p><div class="meta"><span>📍 操作：提前规划提报时间，避免临期提交、要求即日上线。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组/柳璨</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="一、销售中台工单释义" data-search="什么是快速工单？ 选择快速工单，不支持任何定制化服务，以求快速上线。">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">什么是快速工单？</h3></div>
+<div class="answer"><p>选择快速工单，不支持任何定制化服务，以求快速上线。</p><div class="images open"><img src="images/image2.png" alt="images/image2.png" class="faq-img"></div><div class="meta"><span>📍 操作：商品池：销售需向运营人员提供确认已经完成建码的商品池以及定价，或使用标准商品池；商城：使用简易banner+icon的方式上线，无图文罗列。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组/柳璨</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="二、关于商城折扣规则" class="cat-section"><h2 class="section-title">二、关于商城折扣规则</h2><div class="card" data-category="二、关于商城折扣规则" data-search="配赠是什么？如何计算？ 配赠：指企业向员工账户充值/授信时，额外赠送一定比例的额度，属于通过工会谈判的让利行为。
+配赠比例=配赠额度/充值金额。
+配赠商城商品实际到手价=商品结算价×商">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">配赠是什么？如何计算？</h3></div>
+<div class="answer"><p>配赠：指企业向员工账户充值/授信时，额外赠送一定比例的额度，属于通过工会谈判的让利行为。</p><p>配赠比例=配赠额度/充值金额。</p><p>配赠商城商品实际到手价=商品结算价×商城配赠折扣。</p><p>举例：企业充值100元，员工实际到账110元，配赠比例=10/100=10%，实付折扣=100/110=90.9%。</p><div class="images open"><img src="images/image3.png" alt="images/image3.png" class="faq-img"></div><div class="meta"><span>📍 操作：在工会谈判或方案设计时说明配赠比例。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城方案组or商城运营组</span></div><div class="meta"><span>📝 备注：体感较模糊，最终让利给企业职工。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="二、关于商城折扣规则" data-search="公对公折扣是什么？ 公对公折扣：指与企业结算时直接打折，属于让利给企业。例如项目金额为100万元，约定9折结算，则实际结算90万元。">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">公对公折扣是什么？</h3></div>
+<div class="answer"><p>公对公折扣：指与企业结算时直接打折，属于让利给企业。例如项目金额为100万元，约定9折结算，则实际结算90万元。</p><div class="meta"><span>📍 操作：商务谈判/合同结算时约定。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城方案组or商城运营组</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="二、关于商城折扣规则" data-search="商品折扣是什么？ 商品折扣：指通过运营在后台配置商品活动，实现的折扣让利行为。对用户而言让利体感最直观，但属于硬折扣，对利润的杀伤力也是一刀切的。
+举例：该商城内商品约定购物车9">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">商品折扣是什么？</h3></div>
+<div class="answer"><p>商品折扣：指通过运营在后台配置商品活动，实现的折扣让利行为。对用户而言让利体感最直观，但属于硬折扣，对利润的杀伤力也是一刀切的。</p><p>举例：该商城内商品约定购物车9折结算，商品100元时，会在前台显示9折标签，结算时只需支付90元。</p><div class="meta"><span>📍 操作：由运营在后台配置商品活动。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城方案组or商城运营组</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="二、关于商城折扣规则" data-search="无折扣是什么？ 无折扣：指商城不打折，可要求商品本身跟C网售价、京东售价或提出其他具体商品需求。">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">无折扣是什么？</h3></div>
+<div class="answer"><p>无折扣：指商城不打折，可要求商品本身跟C网售价、京东售价或提出其他具体商品需求。</p><div class="meta"><span>📍 操作：在商城方案中选择不打折模式，并指定商品跟价或特殊需求。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城方案组or商城运营组</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="三、关于标准商品池" class="cat-section"><h2 class="section-title">三、关于标准商品池</h2><div class="card" data-category="三、关于标准商品池" data-search="如何查询标准商品池？ 优先使用统一商品池查询功能。微盘标准商品池仅供参考。">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">如何查询标准商品池？</h3></div>
+<div class="answer"><p>优先使用统一商品池查询功能。微盘标准商品池仅供参考。</p><div class="images open"><img src="images/image4.png" alt="images/image4.png" class="faq-img"><img src="images/image5.png" alt="images/image5.png" class="faq-img"></div><div class="meta"><span>📍 操作：路径：销售一点通-统一商品池。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商品运营组/李悦</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="四、关于销售商品池与个性商品池" class="cat-section"><h2 class="section-title">四、关于销售商品池与个性商品池</h2><div class="card" data-category="四、关于销售商品池与个性商品池" data-search="销售商品池和个性商品池有什么区别？ 销售商品池：首次由运营或支持人员创建，后续销售可自行添加、修改或删除商品；涉及负毛利时，需经上级审批。
+个性商品池：销售无任何操控权限，全程仅可由支持或运营人员">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">销售商品池和个性商品池有什么区别？</h3></div>
+<div class="answer"><p>销售商品池：首次由运营或支持人员创建，后续销售可自行添加、修改或删除商品；涉及负毛利时，需经上级审批。</p><p>个性商品池：销售无任何操控权限，全程仅可由支持或运营人员创建。该池内商品的上下架状态仅与采购后台关联，不受标准商品池影响。</p><div class="images open"><img src="images/image6.png" alt="images/image6.png" class="faq-img"><img src="images/image7.png" alt="images/image7.png" class="faq-img"></div><div class="meta"><span>📍 操作：若某商品在标准商品池中不存在或已下架，销售需另行创建个性商品池满足商品在线需求。</span></div><div class="meta"><span>👤 联系人：商城运营组/各地支持</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="五、关于定价原则" class="cat-section"><h2 class="section-title">五、关于定价原则</h2><div class="card" data-category="五、关于定价原则" data-search="跟价有什么建议？ 系统支持按长期售价/C网当前售价进行跟价设置。注意：如跟C网当前售价，当C网开展促销活动（如买一赠一、满199减100等）时，商品售价会临时上调，此时商城端若直">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">跟价有什么建议？</h3></div>
+<div class="answer"><p>系统支持按长期售价/C网当前售价进行跟价设置。注意：如跟C网当前售价，当C网开展促销活动（如买一赠一、满199减100等）时，商品售价会临时上调，此时商城端若直接跟价，会出现售价虚高的问题。</p><p>建议：92折以上的建议直接跟价C网；如有定向囤货的商品，可以单独定价。不要全部自己去单独定价。</p><div class="images open"><img src="images/image8.png" alt="images/image8.png" class="faq-img"></div><div class="meta"><span>📍 操作：在商品池配置中选择跟价策略。</span></div><div class="meta"><span>👤 联系人：商城运营组/各地支持</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="五、关于定价原则" data-search="销售商品池和个性商品池如何设置跟价？ 销售商品池、个性商品池均支持跟价操作。">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">销售商品池和个性商品池如何设置跟价？</h3></div>
+<div class="answer"><p>销售商品池、个性商品池均支持跟价操作。</p><div class="meta"><span>📍 操作：1）销售商品池：自行登录来福商城后台→批量操作→批量设置跟价→选择‘当前售价’进行设置；
+2）个性商品池：提交工单，由运营侧、支持侧协助配置。</span></div><div class="meta"><span>👤 联系人：商城运营组/各地支持</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="六、关于京东比价" class="cat-section"><h2 class="section-title">六、关于京东比价</h2><div class="card" data-category="六、关于京东比价" data-search="京东比价怎么操作？ 当前支持根据标准商品池中的京东售价、链接进行统一比价操作，更新频率每月一次，无法支持实时比价。">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">京东比价怎么操作？</h3></div>
+<div class="answer"><p>当前支持根据标准商品池中的京东售价、链接进行统一比价操作，更新频率每月一次，无法支持实时比价。</p><div class="meta"><span>📍 操作：中台运营无法支持实时京东比价需求，如有该需求，请登陆‘天镜智价’自行完成，获取最新比价信息后同步至运营人员操作。具体操作可查看‘天镜智价’群公告。</span></div><div class="meta"><span>👤 联系人：王敏、陈艺明</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="七、关于商城套餐" class="cat-section"><h2 class="section-title">七、关于商城套餐</h2><div class="card" data-category="七、关于商城套餐" data-search="礼品册套餐和C码套餐分别由谁负责？ 礼品册套餐：由商品中台组建，分为标准礼品册和个性礼品册。标准礼品册上线请联系刘捷华；个性化礼品册由销售自行负责，搭建联系大区支持老师。
+C码套餐：由销售根据表头">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">礼品册套餐和C码套餐分别由谁负责？</h3></div>
+<div class="answer"><p>礼品册套餐：由商品中台组建，分为标准礼品册和个性礼品册。标准礼品册上线请联系刘捷华；个性化礼品册由销售自行负责，搭建联系大区支持老师。</p><p>C码套餐：由销售根据表头自行搭建，并联系商品老师进行备货，自行提报CRM套餐主图设计工单，并对后续套餐库存进行追踪。建议创建数量不超过30个，若超出建议使用与礼品册组合方式满足客户需求。</p><div class="images open"><img src="images/image9.png" alt="images/image9.png" class="faq-img"><img src="images/image10.png" alt="images/image10.png" class="faq-img"></div><div class="meta"><span>📍 操作：礼品册：联系刘捷华或大区支持老师；C码：按表头搭建→联系商品老师备货→提报CRM套餐主图设计工单→追踪库存。</span></div><div class="meta"><span>👤 联系人：刘捷华（标准礼品册）/ 大区支持老师（个性礼品册） / 商城运营组or大区支持老师（C码套餐）</span></div><div class="meta"><span>📝 备注：套餐内商品必须有分销渠道、商品状态为‘展示’且有库存。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="七、关于商城套餐" data-search="C码套餐表头需要哪些字段？ 需保证以下6个字段信息准确且完整：套餐价、套餐名称、商品编码、商品名称、数量、商品图片800*800px。运营/支持配置好C码后会回执套餐号到对应位置，后续修改">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">C码套餐表头需要哪些字段？</h3></div>
+<div class="answer"><p>需保证以下6个字段信息准确且完整：套餐价、套餐名称、商品编码、商品名称、数量、商品图片800*800px。运营/支持配置好C码后会回执套餐号到对应位置，后续修改套餐内商品根据套餐号进行识别。</p><div class="meta"><span>📍 操作：按表头填写并提交，等待回执套餐号。</span></div><div class="meta"><span>👤 联系人：商城运营组/各地支持</span></div><div class="meta"><span>📝 备注：套餐中包含的商品必须在专属商城绑定的商品池中（个性/标准）。全国配送需采购提供四站分销渠道商品码；如仅覆盖某站点，可制定单站点建码。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="七、关于商城套餐" data-search="如何查询套餐商品状态？ 目前中台正在反馈具体查询路径，权限开通后支持自主查询商品状态。">
+<div class="q-header"><span class="freq">⭐</span><h3 class="q-title">如何查询套餐商品状态？</h3></div>
+<div class="answer"><p>目前中台正在反馈具体查询路径，权限开通后支持自主查询商品状态。</p><div class="meta"><span>📍 操作：路径：销售一点通-分销商品池-根据实际情况筛选查看。</span></div><div class="meta"><span>👤 联系人：刘捷华</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="八、关于商城装修" class="cat-section"><h2 class="section-title">八、关于商城装修</h2><div class="card" data-category="八、关于商城装修" data-search="商城首页模板和专题页模板从哪里找？ 新商城上线后，后台功能提供首页模板、新专题页模板使用。">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">商城首页模板和专题页模板从哪里找？</h3></div>
+<div class="answer"><p>新商城上线后，后台功能提供首页模板、新专题页模板使用。</p><div class="images open"><img src="images/image11.png" alt="images/image11.png" class="faq-img"><img src="images/image12.png" alt="images/image12.png" class="faq-img"><img src="images/image13.png" alt="images/image13.png" class="faq-img"><img src="images/image14.png" alt="images/image14.png" class="faq-img"><img src="images/image15.png" alt="images/image15.png" class="faq-img"><img src="images/image16.png" alt="images/image16.png" class="faq-img"></div><div class="meta"><span>📍 操作：路径：销售一点通-来福商城-页面素材中心，根据需求筛选。
+首页模板：页面素材中心-首页配置-根据需求筛选-提交-返回-搜索对应商城名称-找到刚刚提交的信息-点击为有效。
+新专题页：页面素材中心-专题页配置-新建页面-根据关键词筛选页面名称-提交-保存-设置为有效。</span></div><div class="meta"><span>👤 联系人：商城运营组/各地支持/周昊泉</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="九、关于三方应用" class="cat-section"><h2 class="section-title">九、关于三方应用</h2><div class="card" data-category="九、关于三方应用" data-search="三方应用包含哪些？开通流程是什么？ 来福商城三方应用包含：礼品册、商超、到店付等。三方应用除了需要在工单中勾选，还需发送邮件申请开通。发送给直属领导、来福运营组（lfyy@benlai.com），">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">三方应用包含哪些？开通流程是什么？</h3></div>
+<div class="answer"><p>来福商城三方应用包含：礼品册、商超、到店付等。三方应用除了需要在工单中勾选，还需发送邮件申请开通。发送给直属领导、来福运营组（lfyy@benlai.com），如配赠过高有负毛利风险，还需抄送区总审批。</p><div class="meta"><span>📍 操作：1. 工单中勾选三方应用；2. 按模板发送邮件申请开通；3. 如负毛利风险需抄送区总。</span></div><div class="meta"><span>📝 备注：详情查看相关链接：【来福商城】三方供应链&amp;虚拟卡券报价（新增鲜花）、来福商城礼品册功能专题（2026端午节）。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="九、关于三方应用" data-search="商超、到店付等三方应用邮件申请模板？ 邮件需包含：商城编码、商城类型（授信/充值）、客户名称、商城折扣（配赠/结算折扣，如无折扣/无配赠则写‘无’）、需要三方（例如肯德基、麦当劳等）、是否需要预开票">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">商超、到店付等三方应用邮件申请模板？</h3></div>
+<div class="answer"><p>邮件需包含：商城编码、商城类型（授信/充值）、客户名称、商城折扣（配赠/结算折扣，如无折扣/无配赠则写‘无’）、需要三方（例如肯德基、麦当劳等）、是否需要预开票或特批开票（无/授信需要开食品一批/服务费）、提示（三方是否需上调服务费，如美团系列即使在商城没有结算折扣或配赠折扣，也需+7%服务费）。</p><div class="meta"><span>📍 操作：按邮件模板发送至直属领导、来福运营组（lfyy@benlai.com）。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="九、关于三方应用" data-search="礼品册邮件申请模板？ 邮件需包含：商城编码、商城类型（授信/充值）、客户名称、商城折扣、礼品册类型、礼品册是否折扣、礼品册是否需要改价、礼品册是否负毛利、礼品册清单、礼品册编码、礼品">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">礼品册邮件申请模板？</h3></div>
+<div class="answer"><p>邮件需包含：商城编码、商城类型（授信/充值）、客户名称、商城折扣、礼品册类型、礼品册是否折扣、礼品册是否需要改价、礼品册是否负毛利、礼品册清单、礼品册编码、礼品册名称。请务必按模板进行邮件发送申请。</p><div class="meta"><span>📍 操作：按邮件模板发送至直属领导、来福运营组（lfyy@benlai.com），负毛利时抄送区总。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="十、关于演示商城" class="cat-section"><h2 class="section-title">十、关于演示商城</h2><div class="card" data-category="十、关于演示商城" data-search="有哪些演示商城？更新频率如何？">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">有哪些演示商城？更新频率如何？</h3></div>
+<div class="answer">
+<p class="mall-intro">一、长期更新商城，根据年节约2-3周更新一次，包含：</p>
+<div class="mall-row"><a href="https://life.benlai.com/m/488BV060" target="_blank">1、10795 弹性商城（消费券商城）</a><span class="mall-url">https://life.benlai.com/m/488BV060</span></div>
+<div class="images open"><img src="images/image17.png" alt="弹性商城二维码"><img src="images/image18.png" alt="弹性商城二维码"></div>
+<div class="mall-row"><a href="https://life.benlai.com/m/2JPFTXXH" target="_blank">2、10799 通用演示商城（含礼品册，不含低毛三方）</a><span class="mall-url">https://life.benlai.com/m/2JPFTXXH</span></div>
+<div class="images open"><img src="images/image19.png" alt="通用演示商城二维码"><img src="images/image20.png" alt="通用演示商城二维码"></div>
+<div class="mall-row"><a href="https://life.benlai.com/m/X42BR28F" target="_blank">3、3779 标准商城（来福商城公众号对外展示商城）</a><span class="mall-url">https://life.benlai.com/m/X42BR28F</span></div>
+<div class="images open"><img src="images/image21.png" alt="标准商城二维码"><img src="images/image22.png" alt="标准商城二维码"></div>
+<p class="mall-intro">二、定向专属商城，每月按需更新，包含：</p>
+<div class="mall-row"><a href="https://life.benlai.com/m/F284N40N" target="_blank">1、10782 乡村振兴商城</a><span class="mall-url">https://life.benlai.com/m/F284N40N</span></div>
+<div class="images open"><img src="images/image23.png" alt="乡村振兴商城二维码"><img src="images/image24.png" alt="乡村振兴商城二维码"></div>
+<div class="mall-row"><a href="https://life.benlai.com/m/J08TXZZ6" target="_blank">2、10803 生日商城</a><span class="mall-url">https://life.benlai.com/m/J08TXZZ6</span></div>
+<div class="images open"><img src="images/image25.png" alt="生日商城二维码"><img src="images/image26.png" alt="生日商城二维码"></div>
+<div class="mall-row"><a href="https://life.benlai.com/m/VB84LX06" target="_blank">3、10806 电影票商城</a><span class="mall-url">https://life.benlai.com/m/VB84LX06</span></div>
+<div class="images open"><img src="images/image27.png" alt="电影票商城二维码"><img src="images/image28.png" alt="电影票商城二维码"></div>
+</div>
+<div class="meta"><span>📍 操作：根据客户类型选择对应演示商城链接发送。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组</span></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="十一、关于登陆方式" class="cat-section"><h2 class="section-title">十一、关于登陆方式</h2><div class="card" data-category="十一、关于登陆方式" data-search="来福商城有哪些登录方式？ 相较于其他登录方式，二维码绑码登录和链接登录更为常见。主要方式包括：搜索小程序、关注公众号、扫描二维码、链接登录。">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">来福商城有哪些登录方式？</h3></div>
+<div class="answer"><p>相较于其他登录方式，二维码绑码登录和链接登录更为常见。主要方式包括：搜索小程序、关注公众号、扫描二维码、链接登录。</p><div class="meta"><span>📍 操作：根据客户使用习惯选择登录方式，常见为扫描二维码和链接登录。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="十一、关于登陆方式" data-search="搜索小程序登录方式？ 微信搜索【来福商城】小程序---首页右下角【我的】---【登录/注册】---登录---我的---右上角【额度码兑换】---输入密码---完成绑定---前往商城自">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">搜索小程序登录方式？</h3></div>
+<div class="answer"><p>微信搜索【来福商城】小程序---首页右下角【我的】---【登录/注册】---登录---我的---右上角【额度码兑换】---输入密码---完成绑定---前往商城自行选购。</p><div class="meta"><span>📍 操作：引导员工按步骤操作。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组</span></div><div class="meta"><span>📝 备注：优点：小程序可以添加到微信【我的小程序】里面，多次使用下单方便查找。缺点：员工会先看到标准商城，再进入另一个商城（如：女职工品类）。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="十一、关于登陆方式" data-search="关注公众号登录方式？ 微信关注【本来生活来福汇】公众号-输入：比如 中信女工-长按识别商城二维码进入中信女工福利商城-点击我的-点击额度码兑换-输入兑换码-完成绑定和登录-前往商城自">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">关注公众号登录方式？</h3></div>
+<div class="answer"><p>微信关注【本来生活来福汇】公众号-输入：比如 中信女工-长按识别商城二维码进入中信女工福利商城-点击我的-点击额度码兑换-输入兑换码-完成绑定和登录-前往商城自行下单。</p><div class="meta"><span>📍 操作：引导员工关注公众号并按口令进入。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组</span></div><div class="meta"><span>📝 备注：优点：输入口令后直接进入专属商城。缺点：需要先关注公众号。</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="十一、关于登陆方式" data-search="扫描二维码登录方式？ 扫描专属小程序码-点击右下角‘我的’-输入手机号验证码进行登录-登录完成后点击右下角‘我的’-点击右上角‘额度码兑换’-输入额度码密码即可完成绑定-点击左下角首">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">扫描二维码登录方式？</h3></div>
+<div class="answer"><p>扫描专属小程序码-点击右下角‘我的’-输入手机号验证码进行登录-登录完成后点击右下角‘我的’-点击右上角‘额度码兑换’-输入额度码密码即可完成绑定-点击左下角首页，开始选购商品。</p><div class="meta"><span>📍 操作：向客户发送专属小程序码，引导员工按步骤操作。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组</span></div><div class="meta"><span>📝 备注：常用🌟🌟🌟</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="十一、关于登陆方式" data-search="链接登录方式？ 点击商城链接-输入手机号验证码进行登录-登录完成后点击右下角‘我的’-点击右上角‘额度码兑换’-输入额度码密码即可完成绑定-点击左下角首页，开始选购商品。">
+<div class="q-header"><span class="freq">⭐⭐⭐</span><h3 class="q-title">链接登录方式？</h3></div>
+<div class="answer"><p>点击商城链接-输入手机号验证码进行登录-登录完成后点击右下角‘我的’-点击右上角‘额度码兑换’-输入额度码密码即可完成绑定-点击左下角首页，开始选购商品。</p><div class="meta"><span>📍 操作：向客户发送商城链接，引导员工按步骤操作。</span></div><div class="meta"><span>👤 联系人：销售中台/商城运营部/商城运营组</span></div><div class="meta"><span>📝 备注：常用🌟🌟🌟</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="十二、关于CRM设计工单" class="cat-section"><h2 class="section-title">十二、关于设计工单</h2><div class="card" data-category="十二、关于CRM设计工单" data-search="设计收费标准是什么？ 设计工单的收费标准由用户体验设计部制定，可咨询金鑫老师。">
+<div class="q-header"><span class="freq">⭐</span><h3 class="q-title">设计收费标准是什么？</h3></div>
+<div class="answer"><p>设计工单的收费标准由用户体验设计部制定，可咨询金鑫老师。</p><div class="meta"><span>📍 操作：如需了解费用，联系金鑫老师。</span></div><div class="meta"><span>👤 联系人：销售中台/用户体验设计部/金鑫</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="十二、关于CRM设计工单" data-search="为什么提了来福工单还要提设计工单？ 来福商城工单与设计工单为两套独立系统。优先提报来福工单，与运营人员沟通明确商城搭建标准后，再提设计工单，以免浪费成本。
+建议：中台会在各大节点前提供最新标准模板">
+<div class="q-header"><span class="freq">⭐⭐</span><h3 class="q-title">为什么提了来福工单还要提设计工单？</h3></div>
+<div class="answer"><p>来福商城工单与设计工单为两套独立系统。优先提报来福工单，与运营人员沟通明确商城搭建标准后，再提设计工单，以免浪费成本。</p><p>建议：中台会在各大节点前提供最新标准模板，供大家免费选用；若商城有特殊需求需定制化设计图，则销售个人需通过CRM系统提交设计工单，该服务会产生一定费用。</p><div class="meta"><span>📍 操作：先提来福工单，明确标准后再提设计工单。</span></div><div class="meta"><span>👤 联系人：销售中台/用户体验设计部/金鑫</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div><div class="card" data-category="十二、关于CRM设计工单" data-search="特殊需求包括哪些？ 若需要为商城banner添加Logo、制作海报或套餐图，或跟随C网制作时令模板等，请与运营沟通确认后，自行提交设计工单。设计费用明细请联系接单设计师，并在提交时">
+<div class="q-header"><span class="freq">⭐</span><h3 class="q-title">特殊需求包括哪些？</h3></div>
+<div class="answer"><p>若需要为商城banner添加Logo、制作海报或套餐图，或跟随C网制作时令模板等，请与运营沟通确认后，自行提交设计工单。设计费用明细请联系接单设计师，并在提交时留意系统提示。</p><div class="meta"><span>📍 操作：与运营沟通确认后，在CRM系统提交设计工单。</span></div><div class="meta"><span>👤 联系人：销售中台/用户体验设计部/金鑫</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+<section id="十三、关于运营与支持的工作细分" class="cat-section"><h2 class="section-title">十三、关于运营与支持的工作细分</h2><div class="card" data-category="十三、关于运营与支持的工作细分" data-search="运营和支持的工作如何划分？ 运营：以工作台工单形式，为销售提供已中标商城的交付工作，高峰期主要承接已中标商城的首次交付工作，非高峰期承接已中标商城的交付工作，包括但不限于页面配置、商品池搭">
+<div class="q-header"><span class="freq">⭐</span><h3 class="q-title">运营和支持的工作如何划分？</h3></div>
+<div class="answer"><p>运营：以工作台工单形式，为销售提供已中标商城的交付工作，高峰期主要承接已中标商城的首次交付工作，非高峰期承接已中标商城的交付工作，包括但不限于页面配置、商品池搭建等。</p><p>支持：根据各地实际情况，为销售提供演示商城的交付工作，及运营商城工单交付后的后续支持工作（销售也可根据实际情况自行调整）。</p><div class="meta"><span>📍 操作：根据项目阶段（首次交付/后续支持）联系对应团队。</span></div><div class="meta"><span>👤 联系人：商城运营组/各地支持</span></div></div>
+<div class="actions"><button class="copy-btn">📋 复制回答</button></div>
+</div></section>
+    <div class="empty" style="display:none;">没有找到匹配内容</div>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script>
+var cards = document.querySelectorAll('.card');
+var sections = document.querySelectorAll('.cat-section');
+var catItems = document.querySelectorAll('.cat-item');
+var activeCat = 'all';
+var currentQuery = '';
+
+function updateView() {
+  var q = currentQuery.toLowerCase().trim();
+  var hasSearch = q.length > 0;
+  var any = false;
+  cards.forEach(function(card) {
+    var cat = card.dataset.category;
+    var search = card.dataset.search || '';
+    var matchCat = activeCat === 'all' || cat === activeCat;
+    var matchSearch = !hasSearch || search.toLowerCase().indexOf(q) !== -1;
+    if (matchCat && matchSearch) {
+      card.style.display = '';
+      any = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  sections.forEach(function(sec) {
+    var visible = sec.querySelectorAll('.card:not([style*="display: none"])').length;
+    sec.style.display = (activeCat === 'all' || visible > 0) ? '' : 'none';
+  });
+  var empty = document.querySelector('.empty');
+  if (empty) empty.style.display = any ? 'none' : '';
+}
+
+function doSearch(query) {
+  currentQuery = query;
+  document.getElementById('search').value = query;
+  updateView();
+  if (query.trim()) {
+    var firstVisible = document.querySelector('.card:not([style*="display: none"])');
+    if (firstVisible) {
+      firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+
+document.getElementById('search').addEventListener('input', function(e) {
+  doSearch(e.target.value);
+});
+
+document.querySelectorAll('.search-tag').forEach(function(tag) {
+  tag.addEventListener('click', function() {
+    doSearch(tag.getAttribute('data-key'));
+  });
+});
+
+catItems.forEach(function(item) {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+    catItems.forEach(function(i) { i.classList.remove('active'); });
+    item.classList.add('active');
+    activeCat = item.getAttribute('data-target') || 'all';
+    currentQuery = '';
+    document.getElementById('search').value = '';
+    updateView();
+    if (activeCat !== 'all') {
+      var sec = document.getElementById(activeCat);
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+});
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2000);
+}
+
+document.addEventListener('click', function(e) {
+  var copyBtn = e.target.closest('button.copy-btn');
+  if (copyBtn) {
+    var card = copyBtn.closest('.card');
+    var text = card.querySelector('.answer').innerText;
+    card.querySelectorAll('.meta span').forEach(function(m) { text += '\n' + m.innerText; });
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function() { showToast('✅ 已复制到剪贴板'); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('✅ 已复制到剪贴板');
+    }
+  }
+});
+
+updateView();
+</script>
+</body>
+</html>
